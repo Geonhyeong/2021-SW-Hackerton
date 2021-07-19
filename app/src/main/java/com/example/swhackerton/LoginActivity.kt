@@ -53,25 +53,26 @@ class LoginActivity : AppCompatActivity() {
         val signUpButton = findViewById<Button>(R.id.signUpButton)
 
         signUpButton.setOnClickListener {
-            val email = getInputEmail()
-            val password = getInputPassword()
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(
-                            this,
-                            "회원가입에 성공했습니다. 로그인 버튼을 눌러 로그인해주세요.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            "이미 가입한 이메일이거나, 회원가입에 실패했습니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
+            startActivity(Intent(this, SignUpActivity::class.java))
+//            val email = getInputEmail()
+//            val password = getInputPassword()
+//
+//            auth.createUserWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this) { task ->
+//                    if (task.isSuccessful) {
+//                        Toast.makeText(
+//                            this,
+//                            "회원가입에 성공했습니다. 로그인 버튼을 눌러 로그인해주세요.",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//                    } else {
+//                        Toast.makeText(
+//                            this,
+//                            "이미 가입한 이메일이거나, 회원가입에 실패했습니다.",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//                    }
+//                }
         }
     }
 

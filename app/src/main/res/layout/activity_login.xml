@@ -9,7 +9,7 @@
         android:id="@+id/logoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/appname"
+        android:text="@string/real_app_name"
         android:textColor="@color/logo_red"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@id/emailEditText"
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:text="@string/signup"
+        android:text="@string/sign_up"
         app:layout_constraintEnd_toStartOf="@id/loginButton"
         app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
 
