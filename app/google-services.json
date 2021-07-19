@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "659800405027",
+    "project_id": "swhacker-28abe",
+    "storage_bucket": "swhacker-28abe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659800405027:android:9a17d86296c795bac8ad96",
+        "android_client_info": {
+          "package_name": "com.example.swhackerton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659800405027-oun77rr23hpe958ai09j0k4t52d670d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX0zzQoMEGPn4CfzEbEWvzea_idqNiu1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659800405027-oun77rr23hpe958ai09j0k4t52d670d9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
