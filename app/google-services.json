@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "659800405027",
-    "project_id": "swhacker-28abe",
-    "storage_bucket": "swhacker-28abe.appspot.com"
+    "project_number": "937671319697",
+    "project_id": "swhackerton-4c509",
+    "storage_bucket": "swhackerton-4c509.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:659800405027:android:9a17d86296c795bac8ad96",
+        "mobilesdk_app_id": "1:937671319697:android:fa75b68c820d75db059f30",
         "android_client_info": {
           "package_name": "com.example.swhackerton"
         }
       },
       "oauth_client": [
         {
-          "client_id": "659800405027-oun77rr23hpe958ai09j0k4t52d670d9.apps.googleusercontent.com",
+          "client_id": "937671319697-hdauh02ijlp78rqm3m1j4nmdv64f733m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAX0zzQoMEGPn4CfzEbEWvzea_idqNiu1E"
+          "current_key": "AIzaSyBz0dPpmODp9a2kSp0F9EOe7zr7GUh9sWU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "659800405027-oun77rr23hpe958ai09j0k4t52d670d9.apps.googleusercontent.com",
+              "client_id": "937671319697-hdauh02ijlp78rqm3m1j4nmdv64f733m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
