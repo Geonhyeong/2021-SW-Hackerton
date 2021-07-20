@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        handleSuccessLogin()
+                        finish()
                     } else {
                         Toast.makeText(
                             this,
@@ -54,7 +54,6 @@ class LoginActivity : AppCompatActivity() {
 
         signUpButton.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
-
         }
     }
 
