@@ -7,10 +7,11 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.swhackerton.databinding.ActivityMainBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
-
 
 class MainActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
@@ -33,17 +34,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     fun initCreateRoomBtn() {
         var extendedfab = findViewById<ExtendedFloatingActionButton>(R.id.extended_fab)
 
         extendedfab.setOnClickListener {
-            println("Todo:: Create room")
-            Toast.makeText(
-                this,
-                "Create Room!",
-                Toast.LENGTH_SHORT
-            ).show()
+            val dialog = BottomSheetDialog(this)
+
+            val view = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
+            val btnClose = view.findViewById<Button>(R.id.idBtnDismiss)
+            btnClose.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.setCancelable(false)
+            dialog.setContentView(view)
+            dialog.show()
         }
     }
 
