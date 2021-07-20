@@ -4,24 +4,46 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import com.example.swhackerton.databinding.ActivityMainBinding
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
 
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+class MainActivity : AppCompatActivity() {
+    private val auth = FirebaseAuth.getInstance()
+    lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
+        initJoinRoom()
+        initCreateRoomBtn()
         initSignOutBtn()
     }
 
-    override fun onStart() {
-        super.onStart()
+    fun initJoinRoom() {
+        var joinRoom = findViewById<MaterialCardView>(R.id.card_view01)
 
-        if (auth.currentUser == null) {
-            startActivity(Intent(this, LoginActivity::class.java))
+        joinRoom.setOnClickListener {
+            startActivity(Intent(this, VoiceActivity::class.java))
+        }
+    }
+
+
+    fun initCreateRoomBtn() {
+        var extendedfab = findViewById<ExtendedFloatingActionButton>(R.id.extended_fab)
+
+        extendedfab.setOnClickListener {
+            println("Todo:: Create room")
+            Toast.makeText(
+                this,
+                "Create Room!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
