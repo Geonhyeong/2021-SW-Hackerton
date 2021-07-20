@@ -2,5 +2,5 @@
     <string name="app_name">SWHackerton</string>
     <string name="login">로그인</string>
     <string name="sign_up">회원가입</string>
-    <string name="real_app_name">어플이름</string>
+    <string name="real_app_name">로고</string>
 </resources>
