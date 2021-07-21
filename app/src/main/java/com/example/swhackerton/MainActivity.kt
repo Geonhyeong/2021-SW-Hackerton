@@ -17,14 +17,20 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
+    private val currentRoomDB = Firebase.database.reference.child("Rooms")
     lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+
 
         initJoinRoom()
         initCreateRoomBtn()
@@ -44,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         extendedfab.setOnClickListener {
             val dialog = BottomSheetDialog(this)
-            lateinit var topic:String
+            lateinit var title:String
 
             val view = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
             val btnAddTopic = view.findViewById<AppCompatButton>(R.id.addTopicBtn)
@@ -53,10 +59,10 @@ class MainActivity : AppCompatActivity() {
                 val view = inflater.inflate(R.layout.alertdialog_edittext, null)
 
                 val alertDialog = AlertDialog.Builder(this)
-                    .setTitle("Topic을 입력해주세요")
+                    .setTitle("title을 입력해주세요")
                     .setPositiveButton("확인") { dialog, which ->
                         val textView: TextView = view.findViewById(R.id.editText)
-                        topic = textView.text.toString()
+                        title = textView.text.toString()
                     }
                     .setNeutralButton("취소", null)
                     .create()
@@ -68,7 +74,11 @@ class MainActivity : AppCompatActivity() {
 
             val btnClose = view.findViewById<Button>(R.id.idBtnDismiss)
             btnClose.setOnClickListener {
+                var Room = mutableMapOf<String, Any>()
+                Room["title"] = title
+                Room["Owner"] = auth.currentUser?.uid.toString()
 
+                currentRoomDB.child(title).updateChildren(Room)
 
                 dialog.dismiss()
             }
@@ -82,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         var signOut = findViewById<Button>(R.id.signOut)
         signOut.setOnClickListener {
             auth.signOut()
-            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 }
