@@ -27,19 +27,20 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
     private val currentRoomDB = Firebase.database.reference.child("Rooms")
     private val currentUserDB = Firebase.database.reference.child("Users")
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     private lateinit var adapter: RoomAdapter
-    var roomArray : MutableList<Room> = arrayListOf()
+    var roomArray: MutableList<Room> = arrayListOf()
     private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         roomArray.clear()
         val childEventListener = object : ChildEventListener {
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
         currentRoomDB.addChildEventListener(childEventListener)
 
-        var searchView = findViewById<SearchView>(R.id.searchView)
+        val searchView = findViewById<SearchView>(R.id.searchView)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 search(query.toString())
@@ -88,8 +89,8 @@ class MainActivity : AppCompatActivity() {
         initSignOutBtn()
     }
 
-    fun initUserData() {
-        var userId = auth.currentUser?.uid.toString()
+    private fun initUserData() {
+        val userId = auth.currentUser?.uid.toString()
         currentUserDB.child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 user = User(
@@ -97,7 +98,8 @@ class MainActivity : AppCompatActivity() {
                     snapshot.child("nickName").value.toString(),
                     snapshot.child("sex").value.toString(),
                     snapshot.child("stuNum").value.toString(),
-                    userId)
+                    userId
+                )
                 println("USER : " + user)
             }
 
@@ -109,39 +111,44 @@ class MainActivity : AppCompatActivity() {
         println("USER : " + user)
     }
 
-    fun initRoomRecyclerView() {
+    private fun initRoomRecyclerView() {
         adapter = RoomAdapter()
         binding.roomRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.roomRecyclerView.adapter = adapter
     }
 
 
-    fun initJoinRoom() {
-        var joinRoom = findViewById<MaterialCardView>(R.id.card_view)
+    private fun initJoinRoom() {
+        val joinRoom = findViewById<MaterialCardView>(R.id.card_view)
 
         joinRoom.setOnClickListener {
             startActivity(Intent(this, VoiceActivity::class.java))
         }
     }
 
-    fun initCreateRoomBtn() {
-        var extendedfab = findViewById<AppCompatButton>(R.id.extended_fab)
+    private fun initCreateRoomBtn() {
+        val extendedfab = findViewById<AppCompatButton>(R.id.extended_fab)
 
         extendedfab.setOnClickListener {
             val dialog = BottomSheetDialog(this)
-            lateinit var title:String
+            lateinit var title: String
 
             val view = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
             val btnAddTopic = view.findViewById<AppCompatButton>(R.id.addTopicBtn)
+            val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
+
+            title = ""
+            titleTextView.setText("")
+
             btnAddTopic.setOnClickListener {
                 val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 val view = inflater.inflate(R.layout.alertdialog_edittext, null)
-
                 val alertDialog = AlertDialog.Builder(this)
-                    .setTitle("title을 입력해주세요")
+                    .setTitle("방 제목을 입력해주세요")
                     .setPositiveButton("확인") { dialog, which ->
                         val textView: TextView = view.findViewById(R.id.editText)
                         title = textView.text.toString()
+                        titleTextView.setText(title)
                     }
                     .setNeutralButton("취소", null)
                     .create()
@@ -151,9 +158,13 @@ class MainActivity : AppCompatActivity() {
                 alertDialog.show()
             }
 
-            val btnClose = view.findViewById<Button>(R.id.idBtnDismiss)
+            val btnClose = view.findViewById<AppCompatButton>(R.id.idBtnDismiss)
             btnClose.setOnClickListener {
-                var Room = mutableMapOf<String, Any>()
+                if (title == "") {
+                    Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                val Room = mutableMapOf<String, Any>()
 
                 Room["title"] = title
                 Room["OwnerNickname"] = auth.currentUser?.email.toString()
@@ -168,8 +179,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun initSignOutBtn() {
-        var signOut = findViewById<Button>(R.id.signOut)
+    private fun initSignOutBtn() {
+        val signOut = findViewById<Button>(R.id.signOut)
         signOut.setOnClickListener {
             auth.signOut()
             finish()
@@ -179,7 +190,13 @@ class MainActivity : AppCompatActivity() {
     private fun getRoomByKey(roomTitle: String) {
         currentRoomDB.child(roomTitle).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                roomArray.add(Room(snapshot.child("title").value.toString(), snapshot.child("OwnerNickname").value.toString(),snapshot.child("OwnerUid").value.toString()))
+                roomArray.add(
+                    Room(
+                        snapshot.child("title").value.toString(),
+                        snapshot.child("OwnerNickname").value.toString(),
+                        snapshot.child("OwnerUid").value.toString()
+                    )
+                )
                 adapter.submitList(roomArray)
             }
 
@@ -189,7 +206,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun search(keyword : String) {
+    private fun search(keyword: String) {
         val searchRooms = roomArray.filter {
             it.title.contains(keyword, true)
         }
