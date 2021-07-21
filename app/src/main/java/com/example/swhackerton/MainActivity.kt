@@ -158,6 +158,11 @@ class MainActivity : AppCompatActivity() {
                 alertDialog.show()
             }
 
+            val closeButton = view.findViewById<AppCompatButton>(R.id.closeButton)
+            closeButton.setOnClickListener {
+                dialog.dismiss()
+            }
+
             val btnClose = view.findViewById<AppCompatButton>(R.id.idBtnDismiss)
             btnClose.setOnClickListener {
                 if (title == "") {

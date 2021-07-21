@@ -19,7 +19,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo3" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/orange"
+                    android:background="@drawable/button_background_orange"
                     android:fontFamily="@font/bm_jua"
                     android:text="@string/add_a_topic"
                     android:textColor="@color/white"
@@ -46,7 +46,7 @@
                     android:layout_margin="10dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/button_background"
+                    android:background="@color/text_box_blue"
                     android:fontFamily="@font/bm_jua"
                     android:hint="위 버튼을 눌러 입력하세요"
                     android:paddingHorizontal="10dp"
@@ -86,6 +86,19 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="24sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idTVCourseDuration"
+            android:layout_margin="16dp"
+            android:layout_toEndOf="@id/idBtnDismiss"
+            android:background="@drawable/border_all"
+            android:fontFamily="@font/bm_jua"
+            android:text="취소"
+            android:textSize="24sp" />
+
 
     </RelativeLayout>
 
