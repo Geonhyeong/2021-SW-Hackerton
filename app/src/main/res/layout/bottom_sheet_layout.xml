@@ -10,60 +10,52 @@
         android:layout_margin="2dp">
 
         <!--image view for displaying course image-->
-        <ImageView
-            android:id="@+id/idIVCourse"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/logo" />
-
-        <!--text view for displaying course name-->
-        <TextView
-            android:id="@+id/idTVCourseName"
+        <LinearLayout
+            android:id="@+id/idTVCourse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/idIVCourse"
-            android:layout_toRightOf="@id/idIVCourse"
-            android:text="DSA Self Paced Course"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
 
-        <!--text view for displaying course tracks-->
-        <TextView
-            android:id="@+id/idTVCourseTracks"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/idTVCourseName"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/idIVCourse"
-            android:layout_toRightOf="@id/idIVCourse"
-            android:text="Course Tracks : 30"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/logo" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addTopicBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:text="+ Add a Topic"
+                android:textColor="@color/logo_red"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+        </LinearLayout>
 
         <!--text view for displaying course duration-->
         <TextView
             android:id="@+id/idTVCourseDuration"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTVCourseTracks"
+            android:layout_below="@id/idTVCourse"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/idIVCourse"
-            android:layout_toRightOf="@id/idIVCourse"
-            android:text="Course Duration : 4 Months"
+            android:layout_centerHorizontal="true"
+            android:text="Start a room open to everyone"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
         <!--button for dismissing our dialog-->
         <Button
             android:id="@+id/idBtnDismiss"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idIVCourse"
-            android:layout_margin="10dp"
-            android:text="Dismiss dialog"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/idTVCourseDuration"
+            android:layout_margin="8dp"
+            android:text="Create Room"
             android:textAllCaps="false" />
 
     </RelativeLayout>

@@ -1,10 +1,15 @@
 package com.example.swhackerton
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
 import com.example.swhackerton.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -39,10 +44,32 @@ class MainActivity : AppCompatActivity() {
 
         extendedfab.setOnClickListener {
             val dialog = BottomSheetDialog(this)
+            lateinit var topic:String
 
             val view = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
+            val btnAddTopic = view.findViewById<AppCompatButton>(R.id.addTopicBtn)
+            btnAddTopic.setOnClickListener {
+                val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val view = inflater.inflate(R.layout.alertdialog_edittext, null)
+
+                val alertDialog = AlertDialog.Builder(this)
+                    .setTitle("Topic을 입력해주세요")
+                    .setPositiveButton("확인") { dialog, which ->
+                        val textView: TextView = view.findViewById(R.id.editText)
+                        topic = textView.text.toString()
+                    }
+                    .setNeutralButton("취소", null)
+                    .create()
+
+                alertDialog.setCancelable(false)
+                alertDialog.setView(view)
+                alertDialog.show()
+            }
+
             val btnClose = view.findViewById<Button>(R.id.idBtnDismiss)
             btnClose.setOnClickListener {
+
+
                 dialog.dismiss()
             }
             dialog.setCancelable(false)
