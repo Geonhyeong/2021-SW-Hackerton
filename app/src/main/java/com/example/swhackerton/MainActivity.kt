@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initCreateRoomBtn() {
-        var extendedfab = findViewById<ExtendedFloatingActionButton>(R.id.extended_fab)
+        var extendedfab = findViewById<AppCompatButton>(R.id.extended_fab)
 
         extendedfab.setOnClickListener {
             val dialog = BottomSheetDialog(this)
