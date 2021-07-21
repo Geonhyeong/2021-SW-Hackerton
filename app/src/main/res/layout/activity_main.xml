@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/main_widget"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_shadow_start_color"
-        tools:context=".MainActivity"
-        >
+        android:background="@color/layout_gray"
+        tools:context=".MainActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,21 +21,24 @@
                 android:id="@+id/searchView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
                 android:layout_gravity="center"
+                android:layout_weight="3"
+                android:background="@color/white"
                 android:iconifiedByDefault="false"
                 android:queryHint="검색어를 입력하시오" />
 
-
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/signOut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:text="Logout">
+                android:layout_weight="1"
+                android:background="@color/logo_red"
+                android:text="로그아웃"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-            </Button>
+
         </LinearLayout>
 
 
@@ -57,23 +61,28 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:clickable="true">
+
                     <LinearLayout
-                        style="@style/Widget.MaterialComponents.CardView"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
+                        android:background="@drawable/card_view"
+
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp">
-
+                            android:layout_height="wrap_content"<<<<<<< ui
+                            android:layout_margin="8dp"
+                            android:background="@drawable/border_bottom"
+                            android:padding="8dp">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="아르고스 3페 빡숙 333+ 숙코 사사게박제"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Title">
-                            </TextView>
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/bm_jua"
+                                android:text="@string/room_title1"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -84,8 +93,7 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/logo">
-                            </ImageView>
+                                android:src="@drawable/logo2" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -97,20 +105,20 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="lightsout201"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Rah"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Uncle EJ"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
                             </LinearLayout>
                         </LinearLayout>
 
@@ -121,23 +129,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp">
+
                     <LinearLayout
-                        style="@style/Widget.MaterialComponents.CardView"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
+                        android:background="@drawable/card_view"
+
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp">
+
+                            android:layout_margin="8dp"
+                            android:background="@drawable/border_bottom"
+                            android:padding="8dp">
+
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="알고리즘 시간 1페 트라이팟"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Title">
-                            </TextView>
+
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/bm_jua"
+                                android:text="@string/room_title2"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -148,8 +165,9 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/logo">
-                            </ImageView>
+
+                                android:src="@drawable/logo2" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -161,20 +179,25 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="lightsout201"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Rah"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Uncle EJ"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
                             </LinearLayout>
                         </LinearLayout>
 
@@ -185,23 +208,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp">
+
+
                     <LinearLayout
-                        style="@style/Widget.MaterialComponents.CardView"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
+                        android:background="@drawable/card_view"
+
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp">
+
+                            android:layout_margin="8dp"
+                            android:background="@drawable/border_bottom"
+                            android:padding="8dp">
+
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="본1부3 빠르게 ㄱㄱ 랏서폿"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Title">
-                            </TextView>
+
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/bm_jua"
+                                android:text="@string/room_title3"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -212,8 +245,9 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/logo">
-                            </ImageView>
+
+                                android:src="@drawable/logo2" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -225,20 +259,25 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="lightsout201"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Rah"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Uncle EJ"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
                             </LinearLayout>
                         </LinearLayout>
 
@@ -249,23 +288,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp">
+
+
                     <LinearLayout
-                        style="@style/Widget.MaterialComponents.CardView"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
+                        android:background="@drawable/card_view"
+
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp">
+
+                            android:layout_margin="8dp"
+                            android:background="@drawable/border_bottom"
+                            android:padding="8dp">
+
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="MUSIC MOTIVATION"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Title">
-                            </TextView>
+
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/bm_jua"
+                                android:text="@string/room_title4"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -276,8 +325,8 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/logo">
-                            </ImageView>
+                                android:src="@drawable/logo2" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -289,20 +338,22 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="lightsout201"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Rah"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Uncle EJ"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
                             </LinearLayout>
                         </LinearLayout>
 
@@ -313,23 +364,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp">
+
                     <LinearLayout
-                        style="@style/Widget.MaterialComponents.CardView"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
+                        android:background="@drawable/card_view"
+
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp">
+                            android:layout_margin="8dp"
+                            android:background="@drawable/border_bottom"
+                            android:padding="8dp">
+
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="MUSIC MOTIVATION"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Title">
-                            </TextView>
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/bm_jua"
+                                android:text="@string/room_title1"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -340,8 +398,8 @@
                             <ImageView
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/logo">
-                            </ImageView>
+                                android:src="@drawable/logo2" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -353,20 +411,23 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="lightsout201"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Rah"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Uncle EJ"
-                                    android:textAppearance="@style/TextAppearance.AppCompat">
-                                </TextView>
+
+                                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
                             </LinearLayout>
                         </LinearLayout>
 
@@ -375,17 +436,21 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/extended_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/button_background_createroom"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bm_jua"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd = "true"
+            android:layout_gravity="bottom|center"
+            android:paddingHorizontal="30dp"
+            android:textSize="20sp"
             android:layout_margin="16dp"
-            android:text="Create"
-            app:icon="@drawable/logo"/>
+            android:text="@string/create_room" />
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

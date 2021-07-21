@@ -3,4 +3,9 @@
     <string name="login">로그인</string>
     <string name="sign_up">회원가입</string>
     <string name="real_app_name">로고</string>
+    <string name="room_title1">아르고스 3페 빡숙 333+ 숙코 사사게박제</string>
+    <string name="room_title2">알고리즘 시간 1페 트라이팟</string>
+    <string name="room_title3">본1부3 빠르게 ㄱㄱ 랏서폿</string>
+    <string name="room_title4">MUSIC MOTIVATION</string>
+    <string name="create_room">방 만들기</string>
 </resources>

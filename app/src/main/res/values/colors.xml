@@ -9,5 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="logo_blue">#66C2FF</color>
     <color name="logo_red">#D80E19</color>
+    <color name="unlucky_red">#DD565D</color>
     <color name="border_gray">#AEAEAE</color>
+    <color name="layout_gray">#F6F6F6</color>
+    <color name="yellow">#F8CA24</color>
+    <color name="orange">#F69239</color>
 </resources>
