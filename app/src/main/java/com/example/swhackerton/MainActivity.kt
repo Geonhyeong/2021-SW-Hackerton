@@ -10,6 +10,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.widget.Button
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -66,7 +67,19 @@ class MainActivity : AppCompatActivity() {
         }
         currentRoomDB.addChildEventListener(childEventListener)
 
-        
+        var searchView = findViewById<SearchView>(R.id.searchView)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search(query.toString())
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText.toString())
+                return true
+            }
+
+        })
 
         //initUserData()
         initRoomRecyclerView()
@@ -174,5 +187,12 @@ class MainActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    private fun search(keyword : String) {
+        val searchRooms = roomArray.filter {
+            it.title.contains(keyword, true)
+        }
+        adapter.submitList(searchRooms)
     }
 }
