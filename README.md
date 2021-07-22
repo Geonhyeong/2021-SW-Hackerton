@@ -1,6 +1,6 @@
 # 2021-SW-Hackerton
 
-<img src="https://user-images.githubusercontent.com/42195466/126633147-ba3dd6ea-4479-4700-9a3a-285c57d62ace.PNG" alt="logo3" style="zoom:50%;" />
+![logo3](C:\Users\fools\OneDrive\Documents\GH\Project\Github\2021-SW-Hackerton\app\src\main\res\drawable\logo3.PNG){: width="50%" height "50%"}
 
 ## " KNUs(크누어스) "
 
