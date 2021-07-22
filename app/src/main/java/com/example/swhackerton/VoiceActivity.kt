@@ -79,6 +79,9 @@ class VoiceActivity : AppCompatActivity() {
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 println("DEBUG : VoiceActivity OnChildRemoved")
+                if (snapshot.key?.isNotEmpty() == true) {
+                    removeMemberByKey(snapshot.key.orEmpty())
+                }
                 initMemberRecyclerView()
             }
 
@@ -121,6 +124,22 @@ class VoiceActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
+        })
+    }
+
+    private fun removeMemberByKey(userId: String) {
+        currentMemberDB.child(channelId).child("Members").child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                memberArray.remove(memberArray.find {
+                    it.userId == userId
+                })
+                adapter.submitList(memberArray)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
         })
     }
 
