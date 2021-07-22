@@ -2,6 +2,7 @@ package com.example.swhackerton
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swhackerton.adapter.MemberAdapter
@@ -25,6 +26,10 @@ class VoiceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView( this, R.layout.activity_voice)
         channelId = intent.getStringExtra("channelId").toString()
+
+        currentMemberDB.child(channelId).child("title").get().addOnSuccessListener {
+            findViewById<TextView>(R.id.roomTitleTextView).text = it.value.toString()
+        }
 
         memberArray.clear()
         val childEventListener = object : ChildEventListener {

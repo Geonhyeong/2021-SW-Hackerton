@@ -12,15 +12,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.swhackerton.VoiceActivity
 import com.example.swhackerton.databinding.ItemRoomBinding
 import com.example.swhackerton.model.Room
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class RoomAdapter: ListAdapter<Room, RoomAdapter.RoomItemViewHolder>(diffUtil) {
-
     lateinit var context: Context
+    lateinit var channelId : String
     inner class RoomItemViewHolder(private val binding: ItemRoomBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(roomModel: Room) {
             binding.roomTitle.text = roomModel.title
             binding.roomOwner.text = "Host : " + roomModel.OwnerNickname
+            channelId = roomModel.ChannelId
         }
     }
 
@@ -33,7 +37,16 @@ class RoomAdapter: ListAdapter<Room, RoomAdapter.RoomItemViewHolder>(diffUtil) {
         holder.bind(currentList[position])
 
         holder.itemView.setOnClickListener {
-            openVoiceActivity("WTF")
+            // db에 넣는 부분
+            val auth = Firebase.auth
+            val currentRoomDB = Firebase.database.reference.child("Rooms")
+            val currentUserDB = Firebase.database.reference.child("Users")
+            val userId = auth.currentUser?.uid.toString()
+
+            currentUserDB.child(userId).child("nickName").get().addOnSuccessListener {
+                currentRoomDB.child(channelId).child("Members").child(userId).setValue(it.value.toString())
+                openVoiceActivity(channelId)
+            }
         }
     }
 
