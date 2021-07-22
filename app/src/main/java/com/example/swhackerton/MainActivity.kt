@@ -4,12 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.renderscript.Sampler
-import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
@@ -86,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         initRoomRecyclerView()
         //initJoinRoom()
         initCreateRoomBtn()
-        initSignOutBtn()
+        initOpenMenuBtn()
     }
 
     private fun initUserData() {
@@ -123,6 +118,39 @@ class MainActivity : AppCompatActivity() {
 
         joinRoom.setOnClickListener {
             startActivity(Intent(this, VoiceActivity::class.java))
+        }
+    }
+
+    private fun initOpenMenuBtn() {
+        val openMenuButton = findViewById<AppCompatButton>(R.id.openMenuButton)
+
+        openMenuButton.setOnClickListener {
+            val dialog = BottomSheetDialog(this)
+            val view = layoutInflater.inflate(R.layout.bottom_sheet_menu, null)
+
+            val emailTextView = view.findViewById<TextView>(R.id.emailTextView)
+            val nickNameTextView = view.findViewById<TextView>(R.id.nickNameTextView)
+
+            emailTextView.setText(auth.currentUser?.email.toString())
+
+            val userId = auth.currentUser?.uid.toString()
+            currentUserDB.child(userId).get().addOnSuccessListener {
+                nickNameTextView.setText(it.value.toString())
+            }
+
+            val closeButton = view.findViewById<AppCompatButton>(R.id.closeButton)
+            closeButton.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            val signOutButton = view.findViewById<AppCompatButton>(R.id.signOutButton)
+            signOutButton.setOnClickListener {
+                auth.signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+            dialog.setCancelable(false)
+            dialog.setContentView(view)
+            dialog.show()
         }
     }
 
@@ -184,14 +212,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initSignOutBtn() {
-        val signOut = findViewById<Button>(R.id.signOut)
-        signOut.setOnClickListener {
-            auth.signOut()
-            finish()
-        }
-    }
-
     private fun getRoomByKey(roomTitle: String) {
         currentRoomDB.child(roomTitle).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -205,9 +225,7 @@ class MainActivity : AppCompatActivity() {
                 adapter.submitList(roomArray)
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
     }
 

@@ -19,40 +19,39 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/logo3" />
+                android:src="@drawable/ic_account" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/addTopicBtn"
+                <TextView
+                    android:id="@+id/emailTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/button_background_orange"
+                    android:background="@drawable/edittext_background"
                     android:fontFamily="@font/bm_jua"
-                    android:text="@string/add_a_topic"
-                    android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:hint="이메일"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/titleTextView"
+                    android:id="@+id/nickNameTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
                     android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/text_box_blue"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edittext_background"
                     android:fontFamily="@font/bm_jua"
-                    android:hint="위 버튼을 눌러 입력하세요"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp"
+                    android:hint="닉네임"
+                    android:padding="10dp"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -66,23 +65,22 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/bm_hanna_pro"
-            android:text="Start a room open to everyone"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <!--button for dismissing our dialog-->
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/idBtnDismiss"
+            android:id="@+id/signOutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/idTVCourseDuration"
             android:layout_centerHorizontal="true"
             android:layout_margin="8dp"
-            android:background="@drawable/button_background_createroom"
+            android:background="@drawable/button_background_red"
             android:fontFamily="@font/bm_jua"
             android:paddingHorizontal="30dp"
             android:paddingVertical="15dp"
-            android:text="@string/create_room"
+            android:text="로그아웃"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="24sp" />
@@ -93,13 +91,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/idTVCourseDuration"
             android:layout_margin="16dp"
-            android:layout_toEndOf="@id/idBtnDismiss"
+            android:layout_toEndOf="@id/signOutButton"
             android:background="@drawable/border_all"
             android:fontFamily="@font/bm_jua"
             android:text="닫기"
             android:textSize="24sp" />
-
-
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

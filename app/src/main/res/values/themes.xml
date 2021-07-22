@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/unlucky_red</item>
         <!-- Customize your theme here. -->
+        <!-- 상태바까지 view 를 보여줄 수 있다-->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 </resources>
