@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.tts.Voice
 import android.view.LayoutInflater
-import android.widget.SearchView
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
@@ -46,11 +46,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
+                println("DEBUG : changed")
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
@@ -77,33 +77,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        //initUserData()
         initRoomRecyclerView()
-        //initJoinRoom()
         initCreateRoomBtn()
         initOpenMenuBtn()
-    }
-
-    private fun initUserData() {
-        val userId = auth.currentUser?.uid.toString()
-        currentUserDB.child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                user = User(
-                    snapshot.child("name").value.toString(),
-                    snapshot.child("nickName").value.toString(),
-                    snapshot.child("sex").value.toString(),
-                    snapshot.child("stuNum").value.toString(),
-                    userId
-                )
-                println("USER : " + user)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
-        println("USER : " + user)
     }
 
     private fun initRoomRecyclerView() {
@@ -113,13 +89,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun initJoinRoom() {
-        val joinRoom = findViewById<MaterialCardView>(R.id.card_view)
-
-        joinRoom.setOnClickListener {
-            startActivity(Intent(this, VoiceActivity::class.java))
-        }
-    }
 
     private fun initOpenMenuBtn() {
         val openMenuButton = findViewById<AppCompatButton>(R.id.openMenuButton)
@@ -134,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             emailTextView.setText(auth.currentUser?.email.toString())
 
             val userId = auth.currentUser?.uid.toString()
-            currentUserDB.child(userId).get().addOnSuccessListener {
+            currentUserDB.child(userId).child("nickName").get().addOnSuccessListener {
                 nickNameTextView.setText(it.value.toString())
             }
 
@@ -191,20 +160,27 @@ class MainActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
 
-            val btnClose = view.findViewById<AppCompatButton>(R.id.idBtnDismiss)
-            btnClose.setOnClickListener {
+            val btnCreateRoom = view.findViewById<AppCompatButton>(R.id.idBtnDismiss)
+            btnCreateRoom.setOnClickListener {
                 if (title == "") {
                     Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
                 val Room = mutableMapOf<String, Any>()
+                val Members = mutableMapOf<String, Any>()
+                val userId = auth.currentUser?.uid.toString()
 
-                Room["title"] = title
-                Room["OwnerNickname"] = auth.currentUser?.email.toString()
-                Room["OwnerUid"] = auth.currentUser?.uid.toString()
+                currentUserDB.child(userId).child("nickName").get().addOnSuccessListener {
+                    Room["title"] = title
+                    Room["OwnerUid"] = userId
+                    Room["OwnerNickname"] = it.value.toString()
+                    Members[userId] = it.value.toString()
 
-                currentRoomDB.child(title).updateChildren(Room)
+                    currentRoomDB.child(title).updateChildren(Room)
+                    currentRoomDB.child(title).child("Members").updateChildren(Members)
+                }
                 dialog.dismiss()
+                startActivity(Intent(this, VoiceActivity::class.java))
             }
             dialog.setCancelable(false)
             dialog.setContentView(view)
