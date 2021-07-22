@@ -2,12 +2,15 @@ package com.example.swhackerton
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swhackerton.adapter.MemberAdapter
 import com.example.swhackerton.databinding.ActivityVoiceBinding
 import com.example.swhackerton.model.Member
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -75,9 +78,7 @@ class VoiceActivity : AppCompatActivity() {
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
-                if (snapshot.key?.isNotEmpty() == true) {
-                    getMemberByKey(snapshot.key.orEmpty())
-                }
+                println("DEBUG : VoiceActivity OnChildRemoved")
                 initMemberRecyclerView()
             }
 
@@ -92,12 +93,20 @@ class VoiceActivity : AppCompatActivity() {
         currentMemberDB.child(channelId).child("Members").addChildEventListener(childEventListener)
 
         initMemberRecyclerView()
+        initExitBtn()
     }
 
     private fun initMemberRecyclerView() {
         adapter = MemberAdapter()
         binding.memberRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.memberRecyclerView.adapter = adapter
+    }
+
+    private fun initExitBtn() {
+        val btnExit = findViewById<AppCompatButton>(R.id.exitButton)
+        btnExit.setOnClickListener {
+            finish()
+        }
     }
 
     private fun getMemberByKey(userId: String) {
@@ -117,6 +126,10 @@ class VoiceActivity : AppCompatActivity() {
 
     override fun finish() {
         remonConference.leave()
+
+        val userId = Firebase.auth.currentUser?.uid
+        currentMemberDB.child(channelId).child("Members").child(userId.toString()).removeValue()
+
         super.finish()
     }
 }
