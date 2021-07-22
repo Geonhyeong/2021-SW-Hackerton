@@ -14,4 +14,5 @@
     <color name="layout_gray">#F6F6F6</color>
     <color name="yellow">#F8CA24</color>
     <color name="orange">#F69239</color>
+    <color name="text_box_blue">#aaddff</color>
 </resources>

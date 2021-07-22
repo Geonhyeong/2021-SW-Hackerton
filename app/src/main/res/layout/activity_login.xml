@@ -2,15 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/logoTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="60dp"
-        android:src="@drawable/logo"
-        android:textColor="@color/logo_blue"
+        android:src="@drawable/logo3"
         app:layout_constraintBottom_toTopOf="@id/emailEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +23,7 @@
         android:layout_marginHorizontal="75dp"
         android:background="@drawable/edittext_background_red"
         android:hint="이메일"
-        android:padding="10dp"
+        android:padding="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +38,7 @@
         android:background="@drawable/edittext_background_red"
         android:hint="비밀번호"
         android:inputType="textPassword"
-        android:padding="10dp"
+        android:padding="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailEditText" />
@@ -50,10 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_background_red"
+        android:fontFamily="@font/bm_jua"
         android:text="@string/login"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@id/passwordEditText"
         app:layout_constraintStart_toStartOf="@id/passwordEditText"
         app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
@@ -64,10 +63,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_background_red"
+        android:fontFamily="@font/bm_jua"
         android:text="@string/sign_up"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@id/loginButton"
         app:layout_constraintStart_toStartOf="@id/loginButton"
         app:layout_constraintTop_toBottomOf="@id/loginButton" />
