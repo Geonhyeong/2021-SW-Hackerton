@@ -10,14 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:clickable="true"
         tools:ignore="MissingConstraints"
         android:focusable="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/card_view"
             android:orientation="vertical">
 
             <LinearLayout
@@ -59,18 +57,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="lightsout201"
+                        android:layout_margin="1dp"
                         android:textAppearance="@style/TextAppearance.AppCompat" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rah"
+                        android:text="Category : Music"
+                        android:layout_margin="1dp"
                         android:textAppearance="@style/TextAppearance.AppCompat" />
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Uncle EJ"
+                        android:layout_margin="1dp"
+                        android:text="Mode : Voice"
                         android:textAppearance="@style/TextAppearance.AppCompat" />
 
                 </LinearLayout>
