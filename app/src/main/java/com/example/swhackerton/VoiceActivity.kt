@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.remotemonster.sdk.*
 
 class VoiceActivity : AppCompatActivity() {
     private lateinit var channelId : String
@@ -21,6 +22,7 @@ class VoiceActivity : AppCompatActivity() {
     lateinit var binding : ActivityVoiceBinding
     private lateinit var adapter: MemberAdapter
     var memberArray: MutableList<Member> = arrayListOf()
+    private var remonConference = RemonConference()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,33 @@ class VoiceActivity : AppCompatActivity() {
 
         currentMemberDB.child(channelId).child("title").get().addOnSuccessListener {
             findViewById<TextView>(R.id.roomTitleTextView).text = it.value.toString()
+        }
+
+        var config = Config()
+        config.context = this
+        config.serviceId = "16a92cfd-5f71-4e3e-98ac-fca7c57330fc"
+        config.key = "abcf3d2a9832a908f39d29af40914b5c6d0f86d3a8309b23f8b4961f9c1182d7"
+
+        remonConference.create(channelId, config) {
+            participant ->
+
+            participant.localView = null
+        }.on("onRoomCreated") {
+            participant ->
+            participant.tag = 0
+        }.on("onUserJoined") {
+            participant ->
+
+            participant.on("onComplete") {
+                participant ->
+            }
+        }.on("onUserLeft") {
+            participant ->
+
+        }.close {
+
+        }.error {
+            error:RemonException ->
         }
 
         memberArray.clear()
@@ -84,5 +113,10 @@ class VoiceActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    override fun finish() {
+        remonConference.leave()
+        super.finish()
     }
 }

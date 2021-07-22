@@ -7,11 +7,13 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.util.jar.Manifest
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,6 +28,8 @@ class LoginActivity : AppCompatActivity() {
         initLoginButton()
         initSignUpButton()
         initEmailAndPasswordEditText()
+
+        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.RECORD_AUDIO), 0)
     }
 
     private fun initLoginButton() {
