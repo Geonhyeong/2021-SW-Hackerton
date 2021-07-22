@@ -167,17 +167,18 @@ class MainActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
                 val Room = mutableMapOf<String, Any>()
-                val Members = mutableMapOf<String, Any>()
+                val Member = mutableMapOf<String, Any>()
                 val userId = auth.currentUser?.uid.toString()
+                val channelNumber = (1000..1000000).random().toString()
 
                 currentUserDB.child(userId).child("nickName").get().addOnSuccessListener {
                     Room["title"] = title
                     Room["OwnerUid"] = userId
                     Room["OwnerNickname"] = it.value.toString()
-                    Members[userId] = it.value.toString()
+                    Member[userId] = it.value.toString()
 
-                    currentRoomDB.child(title).updateChildren(Room)
-                    currentRoomDB.child(title).child("Members").updateChildren(Members)
+                    currentRoomDB.child(channelNumber).updateChildren(Room)
+                    currentRoomDB.child(channelNumber).child("Members").updateChildren(Member)
                 }
                 dialog.dismiss()
                 startActivity(Intent(this, VoiceActivity::class.java))
@@ -195,7 +196,8 @@ class MainActivity : AppCompatActivity() {
                     Room(
                         snapshot.child("title").value.toString(),
                         snapshot.child("OwnerNickname").value.toString(),
-                        snapshot.child("OwnerUid").value.toString()
+                        snapshot.child("OwnerUid").value.toString(),
+                        snapshot.key.toString()
                     )
                 )
                 adapter.submitList(roomArray)
