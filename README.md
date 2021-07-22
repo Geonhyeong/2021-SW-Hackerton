@@ -56,12 +56,12 @@
 ## 예시 화면
 
 <p align="center">
-    <figure style="display:inline; text-algin:center;">
+    <figure style="display:none; text-algin:center;">
         <img src="https://user-images.githubusercontent.com/42195466/126719177-1fc5bb8f-76be-4e67-995f-6355016c06db.gif" width="40%"/>
         <figcaption style="text-align:center; font-size;15px">
         	[방 목록 검색 예시]
         </figcaption>
-    </figure><figure style="display:inline; text-algin:center;">
+    </figure><figure style="display:none; text-algin:center;">
         <img src="https://user-images.githubusercontent.com/42195466/126719973-a8812b08-9431-4e82-84f0-5d7f59c4ded3.gif" width="40%"/>
         <figcaption style="text-align:center; font-size;15px">
         	[방 목록 검색 예시]
