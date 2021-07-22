@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swhackerton.adapter.RoomAdapter
@@ -43,10 +44,12 @@ class MainActivity : AppCompatActivity() {
                 if (snapshot.key?.isNotEmpty() == true) {
                     getRoomByKey(snapshot.key.orEmpty())
                 }
+                println("DEBUG : MainActivity OnChildAdded")
+                initRoomRecyclerView()
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                println("DEBUG : changed")
+                println("DEBUG : MainActivity OnChildChanged")
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
@@ -179,8 +182,12 @@ class MainActivity : AppCompatActivity() {
 
                     currentRoomDB.child(channelNumber).updateChildren(Room)
                     currentRoomDB.child(channelNumber).child("Members").updateChildren(Member)
+
                     dialog.dismiss()
-                    startActivity(Intent(this, VoiceActivity::class.java))
+
+                    val intent = Intent(this, VoiceActivity::class.java)
+                    intent.putExtra("channelId", channelNumber)
+                    startActivity(intent)
                 }
             }
             dialog.setCancelable(false)

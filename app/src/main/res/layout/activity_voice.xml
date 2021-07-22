@@ -5,7 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/layout_gray">
 
         <TextView
             android:id="@+id/roomTitleTextView"
@@ -20,9 +21,9 @@
             android:text="Hello World!"
             android:textColor="@color/black"
             android:textSize="30sp"
-            android:padding="8dp"
+            android:padding="16dp"
             android:fontFamily="@font/bm_jua"
-            android:background="@drawable/border_bottom">
+            android:background="@drawable/border_all_red">
         </TextView>
 
         <androidx.recyclerview.widget.RecyclerView

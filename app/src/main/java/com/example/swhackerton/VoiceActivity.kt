@@ -37,16 +37,19 @@ class VoiceActivity : AppCompatActivity() {
                 if (snapshot.key?.isNotEmpty() == true) {
                     getMemberByKey(snapshot.key.orEmpty())
                 }
+                println("DEBUG : VoiceActivity OnChildAdded")
+                initMemberRecyclerView()
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                println("DEBUT : VOICEACTIVIT ONCHILD")
+                println("DEBUG : VoiceActivity ONCHILDChanged")
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 if (snapshot.key?.isNotEmpty() == true) {
                     getMemberByKey(snapshot.key.orEmpty())
                 }
+                initMemberRecyclerView()
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
@@ -74,7 +77,6 @@ class VoiceActivity : AppCompatActivity() {
                 memberArray.add(
                     Member(userId, snapshot.value.toString())
                 )
-                println("DEBUG : " + snapshot.value.toString())
                 adapter.submitList(memberArray)
             }
 
