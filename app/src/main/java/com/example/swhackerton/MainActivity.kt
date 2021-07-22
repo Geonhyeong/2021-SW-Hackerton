@@ -179,9 +179,9 @@ class MainActivity : AppCompatActivity() {
 
                     currentRoomDB.child(channelNumber).updateChildren(Room)
                     currentRoomDB.child(channelNumber).child("Members").updateChildren(Member)
+                    dialog.dismiss()
+                    startActivity(Intent(this, VoiceActivity::class.java))
                 }
-                dialog.dismiss()
-                startActivity(Intent(this, VoiceActivity::class.java))
             }
             dialog.setCancelable(false)
             dialog.setContentView(view)
