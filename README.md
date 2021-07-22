@@ -57,6 +57,10 @@
 
 <img src="https://user-images.githubusercontent.com/42195466/126719177-1fc5bb8f-76be-4e67-995f-6355016c06db.gif" width="40%"/>
 
+<img src="https://user-images.githubusercontent.com/42195466/126719973-a8812b08-9431-4e82-84f0-5d7f59c4ded3.gif" width="40%"/>
+
+
+
 ## 세부 기능
 
 - 개발 환경 : Android Studio (4.1.2), Firebase
@@ -97,4 +101,10 @@
 
 ## 시연 영상
 
- // 링크
+- 호스트 시점 영상
+
+  https://youtu.be/dVHAKgTQ4l8
+
++ 참여자 시점 영상
+
+  https://youtu.be/TENlw4P24qk
