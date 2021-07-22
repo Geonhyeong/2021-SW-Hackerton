@@ -54,13 +54,12 @@
 ##### 이러한 기능을 가진 저희 KNUs(크누어스)를 통해 코로나로 인해 외롭고 단절된 이 시국에 방역수칙을 어기지 않으면서 합법적으로 온라인상에 모일 수 있습니다.
 
 ## 예시 화면
-
+<pre>
+                                 [방 목록 검색 예시]                                               [방 접속 예시]
+</pre>      
 <p align="center">
   <img src="https://user-images.githubusercontent.com/42195466/126719177-1fc5bb8f-76be-4e67-995f-6355016c06db.gif" width="40%"/>        <img src="https://user-images.githubusercontent.com/42195466/126719973-a8812b08-9431-4e82-84f0-5d7f59c4ded3.gif" width="40%"/>
 </p>
-<pre align="center">
-  [방 목록 검색 예시]                             [방 접속 예시]
-</pre>
 
 ## 세부 기능
 
