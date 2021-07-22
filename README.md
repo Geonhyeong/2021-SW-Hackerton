@@ -53,6 +53,10 @@
 
 ##### 이러한 기능을 가진 저희 KNUs(크누어스)를 통해 코로나로 인해 외롭고 단절된 이 시국에 방역수칙을 어기지 않으면서 합법적으로 온라인 상에 모일 수 있습니다.
 
+## 예시 화면
+
+<img src="https://user-images.githubusercontent.com/42195466/126719177-1fc5bb8f-76be-4e67-995f-6355016c06db.gif" width="40%" alt="방 목록 검색 화면"/>
+
 ## 세부 기능
 
 - 개발 환경 : Android Studio (4.1.2), Firebase
