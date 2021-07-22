@@ -57,6 +57,30 @@
 
         </LinearLayout>
 
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idTVCourseDuration"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/voiceRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:checked="true"
+                android:text="음성"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/videoRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="영상"
+                android:textSize="18sp" />
+
+        </RadioGroup>
         <!--text view for displaying course duration-->
         <TextView
             android:id="@+id/idTVCourseDuration"
@@ -77,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/idTVCourseDuration"
             android:layout_centerHorizontal="true"
-            android:layout_margin="8dp"
+            android:layout_marginTop="18dp"
             android:background="@drawable/button_background_createroom"
             android:fontFamily="@font/bm_jua"
             android:paddingHorizontal="30dp"
@@ -92,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/idTVCourseDuration"
-            android:layout_margin="16dp"
+            android:layout_margin="20dp"
             android:layout_toEndOf="@id/idBtnDismiss"
             android:background="@drawable/border_all"
             android:fontFamily="@font/bm_jua"
