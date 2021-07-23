@@ -3,6 +3,7 @@
 <img src="https://user-images.githubusercontent.com/42195466/126633147-ba3dd6ea-4479-4700-9a3a-285c57d62ace.PNG" width="300px" height="400px">
 
 # " KNUs(크누어스) "
+※ KNUs는 안드로이드 스튜디오에서 제작한 프로그램이며, <KNUs apk파일> 압축파일로 첨부하였습니다.
 
 - 팀명: 면상에 지건
 
